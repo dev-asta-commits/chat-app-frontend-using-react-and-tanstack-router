@@ -1,19 +1,15 @@
-import { LogOut } from "./component/LogOut";
-import { UserForm } from "./component/Userform";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 
-// type imports
-import { type formProps } from "./utils/types";
+import { routeTree } from "./routeTree.gen";
 
-const form: formProps = {
-    formType: "SignIn",
-    apiRoute: "login",
-};
+const router = createRouter({ routeTree });
 
-export function App() {
-    return (
-        <div className="flex flex-col h-lvh w-full items-center justify-center">
-            <UserForm {...form} />
-            <LogOut />
-        </div>
-    );
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }

@@ -1,4 +1,4 @@
 export type formProps = {
-    formType: string;
-    apiRoute: string;
+  formType: string;
+  apiRoute: string;
 };
